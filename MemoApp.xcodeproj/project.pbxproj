@@ -18,6 +18,7 @@
 		332C61322C9ABFEA0057B44E /* MainCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332C61312C9ABFEA0057B44E /* MainCore.swift */; };
 		332C61352C9BEE080057B44E /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332C61342C9BEE080057B44E /* Memo.swift */; };
 		332C61372C9BEE1B0057B44E /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332C61362C9BEE1B0057B44E /* Folder.swift */; };
+		332C613B2C9BEF070057B44E /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332C613A2C9BEF070057B44E /* MemoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		332C61312C9ABFEA0057B44E /* MainCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCore.swift; sourceTree = "<group>"; };
 		332C61342C9BEE080057B44E /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		332C61362C9BEE1B0057B44E /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
+		332C613A2C9BEF070057B44E /* MemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				332C612D2C9ABFC10057B44E /* SceneDelegate.swift */,
 				332C61382C9BEE280057B44E /* Model */,
 				332C61332C9AC0B80057B44E /* Main */,
+				332C61392C9BEEF40057B44E /* Memo */,
 				332C611E2C9ABCE00057B44E /* Assets.xcassets */,
 				332C61202C9ABCE00057B44E /* Preview Content */,
 			);
@@ -101,6 +104,14 @@
 				332C61362C9BEE1B0057B44E /* Folder.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		332C61392C9BEEF40057B44E /* Memo */ = {
+			isa = PBXGroup;
+			children = (
+				332C613A2C9BEF070057B44E /* MemoView.swift */,
+			);
+			path = Memo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				332C61352C9BEE080057B44E /* Memo.swift in Sources */,
+				332C613B2C9BEF070057B44E /* MemoView.swift in Sources */,
 				332C612C2C9ABF9F0057B44E /* AppDelegate.swift in Sources */,
 				332C611D2C9ABCDE0057B44E /* ContentView.swift in Sources */,
 				332C61372C9BEE1B0057B44E /* Folder.swift in Sources */,

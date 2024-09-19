@@ -24,6 +24,27 @@ struct MainView: View {
         )
         .navigationTitle("폴더")
         .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+          ToolbarItemGroup(placement: .topBarTrailing) {
+            Button("편집") {
+              
+            }
+          }
+          ToolbarItemGroup(placement: .bottomBar) {
+            Button {
+              
+            } label: {
+              Label("", systemImage: "folder.badge.plus")
+            }
+            Spacer()
+            Button {
+              
+            } label: {
+              Label("", systemImage: "square.and.pencil")
+            }
+          }
+        }
+        .tint(.yellow)
       }
     }
   }
@@ -75,21 +96,26 @@ struct MainView: View {
   }
   
   @ViewBuilder private func row(folder: Folder) -> some View {
-    HStack {
-      Image(systemName: folder.iconName)
-        .resizable()
-        .foregroundColor(.yellow)
-        .frame(width: 24, height: 20)
-      Text(folder.title)
-        .padding(.horizontal, 10)
-      Spacer()
-      Text("\(folder.memoList.count)")
-        .foregroundColor(.gray)
-      Image(systemName: "chevron.right")
-        .foregroundColor(.gray)
+    NavigationLink {
+      MemoView()
+    } label: {
+      HStack {
+        Image(systemName: folder.iconName)
+          .resizable()
+          .foregroundColor(.yellow)
+          .frame(width: 24, height: 20)
+        Text(folder.title)
+          .foregroundColor(Color(uiColor: .label))
+          .padding(.horizontal, 10)
+        Spacer()
+        Text("\(folder.memoList.count)")
+          .foregroundColor(.gray)
+        Image(systemName: "chevron.right")
+          .foregroundColor(.gray)
+      }
+      .frame(height: 40)
+      .padding(.horizontal, 20)
+      .padding(.vertical, 5)
     }
-    .frame(height: 40)
-    .padding(.horizontal, 20)
-    .padding(.vertical, 5)
   }
 }
