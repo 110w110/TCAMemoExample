@@ -85,6 +85,7 @@ struct MainView: View {
               row(folder: folderList[index])
               if index < folderList.count - 1 {
                 Divider()
+                  .padding(.leading, 60)
               }
             }
           }
