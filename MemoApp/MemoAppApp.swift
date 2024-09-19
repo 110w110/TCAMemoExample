@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct MemoAppApp: App {
+  @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
   var body: some Scene {
     WindowGroup {
-      ContentView()
+      MainView(store: appDelegate.store)
     }
   }
 }
