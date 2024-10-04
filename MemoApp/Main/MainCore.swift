@@ -10,6 +10,8 @@ import ComposableArchitecture
 
 struct MainCore: Reducer {
   struct State: Equatable {
+    @PresentationState var folderState: FolderCore.State?
+    
     let folderList: [Folder] = [
       Folder(title: "모든 나의 iPhone", memoList: [
         Memo(title: "동해물과", content: "백두산이", createdDate: "20240918000000", modifiedDate: "20240918000000"),
@@ -18,13 +20,13 @@ struct MainCore: Reducer {
       Folder(title: "새로운 폴더", memoList: [
         Memo(title: "Test", content: "testtest", createdDate: "20200101000000", modifiedDate: "20200101000000")])
     ]
-    var memoState: MemoCore.State?
   }
   
   enum Action: Equatable {
     case printHello
     
-    case memoItemTouched(Memo)
+    case folder(PresentationAction<FolderCore.Action>)
+    case folderItemTouched(Folder)
   }
   
   var body: some ReducerOf<Self> {
@@ -34,13 +36,16 @@ struct MainCore: Reducer {
         print("Hello")
         return .none
         
-      case .memoItemTouched(let memo):
-        state.memoState = .init(memo: memo)
+      case .folderItemTouched(let folder):
+        state.folderState = .init(folder: folder)
         return .none
         
       default:
         return .none
       }
+    }
+    .ifLet(\.$folderState, action: /Action.folder) {
+      FolderCore()
     }
   }
 }

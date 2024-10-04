@@ -6,39 +6,39 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct FolderView: View {
+  let store: StoreOf<FolderCore>
+  
   var body: some View {
-    ScrollView {
-      SearchBar()
-//                section(header: "나의 iPhone")
-    }
-    .background(
-      Color(uiColor: .groupTableViewBackground)
-        .edgesIgnoringSafeArea(.all)
-    )
-    .navigationTitle("폴더")
-    .navigationBarTitleDisplayMode(.large)
-    .toolbar {
-      ToolbarItemGroup(placement: .topBarTrailing) {
-        Button("편집") {
-          
+    WithViewStore(self.store, observe: { $0 }) { viewStore in
+      ScrollView {
+        SearchBar()
+      }
+      .navigationTitle(viewStore.folder?.title ?? "")
+      .navigationBarTitleDisplayMode(.large)
+      .toolbar {
+        ToolbarItemGroup(placement: .topBarTrailing) {
+          Button("편집") {
+            
+          }
+        }
+        ToolbarItemGroup(placement: .bottomBar) {
+          Button {
+            
+          } label: {
+            Label("", systemImage: "folder.badge.plus")
+          }
+          Spacer()
+          Button {
+            
+          } label: {
+            Label("", systemImage: "square.and.pencil")
+          }
         }
       }
-      ToolbarItemGroup(placement: .bottomBar) {
-        Button {
-          
-        } label: {
-          Label("", systemImage: "folder.badge.plus")
-        }
-        Spacer()
-        Button {
-          
-        } label: {
-          Label("", systemImage: "square.and.pencil")
-        }
-      }
+      .tint(.yellow)
     }
-    .tint(.yellow)
   }
 }

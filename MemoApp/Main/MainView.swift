@@ -79,26 +79,30 @@ struct MainView: View {
   }
   
   @ViewBuilder private func row(folder: Folder) -> some View {
-    NavigationLink {
-      FolderView()
-    } label: {
-      HStack {
-        Image(systemName: folder.iconName)
-          .resizable()
-          .foregroundColor(.yellow)
-          .frame(width: 24, height: 20)
-        Text(folder.title)
-          .foregroundColor(Color(uiColor: .label))
-          .padding(.horizontal, 10)
-        Spacer()
-        Text("\(folder.memoList.count)")
-          .foregroundColor(.gray)
-        Image(systemName: "chevron.right")
-          .foregroundColor(.gray)
+    WithViewStore(self.store, observe: { $0 }) { viewStore in
+      NavigationLinkStore(self.store.scope(state: \.$folderState, action: { .folder($0) })) {
+        viewStore.send(.folderItemTouched(folder))
+      } destination: {
+        FolderView(store: $0)
+      } label: {
+        HStack {
+          Image(systemName: folder.iconName)
+            .resizable()
+            .foregroundColor(.yellow)
+            .frame(width: 24, height: 20)
+          Text(folder.title)
+            .foregroundColor(Color(uiColor: .label))
+            .padding(.horizontal, 10)
+          Spacer()
+          Text("\(folder.memoList.count)")
+            .foregroundColor(.gray)
+          Image(systemName: "chevron.right")
+            .foregroundColor(.gray)
+        }
+        .frame(height: 40)
+        .padding(.horizontal, 20)
+        .padding(.vertical, 5)
       }
-      .frame(height: 40)
-      .padding(.horizontal, 20)
-      .padding(.vertical, 5)
     }
   }
 }
