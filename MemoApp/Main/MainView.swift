@@ -15,11 +15,11 @@ struct MainView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       NavigationView {
         ScrollView {
-          searchBar()
+          SearchBar()
           section(header: "나의 iPhone")
         }
         .background(
-          Color(uiColor: .groupTableViewBackground)
+          Color(uiColor: .systemGroupedBackground)
             .edgesIgnoringSafeArea(.all)
         )
         .navigationTitle("폴더")
@@ -47,24 +47,6 @@ struct MainView: View {
         .tint(.yellow)
       }
     }
-  }
-  
-  @ViewBuilder private func searchBar() -> some View {
-    ZStack {
-      RoundedRectangle(cornerRadius: 10)
-        .foregroundColor(Color(uiColor: .systemGray5))
-      HStack {
-        Image(systemName: "magnifyingglass")
-        Text("검색")
-        Spacer()
-        Image(systemName: "mic.fill")
-      }
-      .foregroundColor(Color(uiColor: .gray))
-      .padding(.horizontal, 5)
-    }
-    .frame(height: 36)
-    .padding(.horizontal, 20)
-    .padding(.vertical, 5)
   }
   
   @ViewBuilder private func section(header: String = "") -> some View {
@@ -98,7 +80,7 @@ struct MainView: View {
   
   @ViewBuilder private func row(folder: Folder) -> some View {
     NavigationLink {
-      MemoView()
+      FolderView()
     } label: {
       HStack {
         Image(systemName: folder.iconName)
@@ -118,5 +100,25 @@ struct MainView: View {
       .padding(.horizontal, 20)
       .padding(.vertical, 5)
     }
+  }
+}
+
+struct SearchBar: View {
+  var body: some View {
+    ZStack {
+      RoundedRectangle(cornerRadius: 10)
+        .foregroundColor(Color(uiColor: .systemGray5))
+      HStack {
+        Image(systemName: "magnifyingglass")
+        Text("검색")
+        Spacer()
+        Image(systemName: "mic.fill")
+      }
+      .foregroundColor(Color(uiColor: .gray))
+      .padding(.horizontal, 5)
+    }
+    .frame(height: 36)
+    .padding(.horizontal, 20)
+    .padding(.vertical, 5)
   }
 }

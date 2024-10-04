@@ -1,13 +1,13 @@
 //
-//  MemoView.swift
+//  FolderView.swift
 //  MemoApp
 //
-//  Created by 한태희 on 9/19/24.
+//  Created by 한태희 on 10/4/24.
 //
 
 import SwiftUI
 
-struct MemoView: View {
+struct FolderView: View {
   var body: some View {
     ScrollView {
       SearchBar()
